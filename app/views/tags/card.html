@@ -1,0 +1,7 @@
+<div>
+    #{ifnot _card.finished}<input type="checkbox" onclick="t.toggle_card_finished(${_card.id},${_card.list.id});">#{/ifnot}
+    <span id="card-${_card.id}">${_card.name}</span>
+    <a href="javascript:void(0)" onclick="t.view_card(${_card.id})">&gt;&gt;</a>
+</div>
+<a href="javascript:void(0)"
+   onclick="$('card-${_card.id}').inEdit({Xhr:{params:{'card.id' : ${_card.id}}, onSuccess : function(){ t.update_list(${_card.list.id}); }}, name : 'card.name', url : '@{Application.saveCard()}'}); return false;">修改</a>

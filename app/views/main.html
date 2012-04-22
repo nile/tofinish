@@ -1,16 +1,59 @@
 <!DOCTYPE html>
-
-<html>
-    <head>
-        <title>#{get 'title' /}</title>
-        <meta charset="${_response_encoding}">
-        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
-        #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        #{get 'moreScripts' /}
-    </head>
-    <body>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>#{get 'title' /}</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/chico-0.10.4.css'}"/>
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/mesh-0.10.4.css'}"/>
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+    #{get 'moreStyles' /}
+    #{script "right-src.js"/}
+    #{script "right/in-edit-src.js"/}
+    #{script "right/lightbox-src.js"/}
+    #{script "right/rte-src.js"/}
+    #{script "tofinish.js"/}
+    #{get 'moreScripts'/}
+</head>
+<body>
+<div class="ch-g1" style="height: 72px;">
+    <div class="ch-box">
+        #{a @Application.index()}TOFINISH#{/a}
+        <div>#{a @Application.login()}登录#{/a} <a href="javascript:void(0);" onclick="javascript:t.list_boards()"> 面板</a></div>
+    </div>
+</div>
+<div class="ch-g1">
+    <div class="ch-g1">
+        <div class="ch-box" id="desktop">
         #{doLayout /}
-    </body>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var t = new T({
+        view_card_url: '@{Application.viewCard()}',
+        list_boards_url:'@{Application.listBoard()}',
+        view_board_url:  '@{Application.viewBoard()}',
+        create_board_url: '@{Application.createBoard()}',
+        view_list_url: '@{Application.viewList()}',
+        save_card_url:'@{Application.saveCard()}',
+        view_comments_url: '@{Application.viewComments()}',
+        create_comment_url: '@{Application.createComment()}'
+    });
+    $(document).onReady(function(){
+        var _resize = function(){$('desktop').setStyle('height',$(window).size().y-110+'px');};
+        $(window).on({
+            resize: _resize
+        });
+        _resize();
+    });
+;
+</script>
+</body>
 </html>

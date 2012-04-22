@@ -1,0 +1,13 @@
+#{extends 'plain.html'/}
+<form class="ch-form" action="@{Application.saveBoard}" id="create-board-form">
+    <p class="ch-form-row ch-form-required">
+        <label for="board_name">面板名称:<em>*</em></label>
+        <input type="text" required placeholder="Some text here..." size="30" name="board.name" id="board_name"/>
+        <span class="ch-form-hint">面板名称</span>
+    </p>
+
+    <p class="ch-form-actions">
+        <input class="ch-btn" type="button" value="创建面板" onclick="t.save_board(event)"/>
+    </p>
+</form>
+

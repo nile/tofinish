@@ -1,0 +1,8 @@
+#{extends 'plain.html'/}
+
+#{if card.comments().size()==0}
+<div class="ch-information">还没有评论</div>
+#{/if}
+#{list card.comments(), as: 'comment'}
+<div>${comment.comment} <span>${comment.createdAt.freindly()}</span></div>
+#{/list}

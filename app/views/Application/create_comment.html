@@ -1,0 +1,7 @@
+#{extends 'plain.html'/}
+#{form @Application.commentCard(), id:'card-comment-form-'+card.id}
+<input type="hidden" name="comment.card.id" value="${card.id}">
+<textarea id="card-comment-text" style="width:588px;" name="comment.comment"
+          data-rte="{}"></textarea>
+<input type="button" value="保存" onclick="t.comment_card(${card.id})">
+#{/form}

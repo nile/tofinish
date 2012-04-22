@@ -1,0 +1,22 @@
+#{extends 'plain.html'/}
+<div style="width:600px;min-height: 500px;">
+    <div>
+    #{form @Application.saveCard(), id:'update-card-detail-form-'+card.id }
+        <input type="hidden" name="card.id" value="${card.id}">
+
+        <div>
+            <input name="card.name" value="${card.name}" style="width:400px;">
+            <input type="button" value="保存" onclick="t.save_card_detail(${card.id})">
+        </div>
+        <textarea id="card-desc-text" style="width:588px;" name="card.description"
+                  data-rte="{}">${card.description}</textarea>
+    #{/form}
+    </div>
+    <div>
+        <div id="card-comments"></div>
+        <div class="ch-information"><a href="javascript:void(0)" onclick="t.create_comment(${card.id})">增加评论</a></div>
+        <div id="create-comment"></div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>

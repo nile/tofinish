@@ -1,0 +1,6 @@
+#{extends 'plain.html'/}
+<form action="@{Application.saveList}" id="create-list-form">
+    <input type="hidden" name="list.board.id" value="${boardId}">
+    <input type="text" name="list.name">
+    <input type="button" value="创建列表" onclick="T.save_list(event)">
+</form>
