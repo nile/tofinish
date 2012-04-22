@@ -7,6 +7,7 @@
  */
 var T = function (options) {
     var defaults = {
+        login_url: '',
         list_boards_url:'',
         view_board_url:'',
         create_board_url:'',
@@ -87,6 +88,9 @@ T.prototype.create_comment = function (card_id) {
             Lightbox.current.dialog.resize()
         }
     });
+}
+T.prototype.login = function(){
+    $('desktop').load(this.opts.login_url);
 }
 
 

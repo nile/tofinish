@@ -1,38 +1,41 @@
 #{extends 'plain.html'/}
 <div class="clearfix"></div>
-
+<table class="ch-g1" style="float:none; width: ${(board.lists().size()+1)*400}px;" >
+                        <tr>
 #{list board.lists(),as:"list"}
-<div class="ch-g1-3" id="list-${list.id}">
-    <div class="ch-box ch-centercolumn">
-        <div class="title-bar" data-list-id="${list.id}">${list.name}</div>
-        <div>
-        #{list list.cards(), as:'card'}
+    <td class="ch-g1-3" id="list-${list.id}" style="float:none;width: 400px;">
+        <div class="ch-box ch-centercolumn">
+            <div class="list-title-bar" data-list-id="${list.id}">${list.name}</div>
+            <div>
+            #{list list.cards(), as:'card'}
             #{card card:card/}
         #{/list}
+            </div>
+            <div>
+            #{form @Application.saveCard() , id:'create-card-form-'+list.id, 'data-list-id':list.id,
+                'onsubmit':'return
+                false;'}
+                <input type="hidden" name="card.list.id" value="${list.id}">
+                <input type="text" name="card.name">
+                <input type="button" value="保存" onclick="t.save_card(${list.id})">
+            #{/form}
+            </div>
         </div>
-        <div>
-        #{form @Application.saveCard() , id:'create-card-form-'+list.id, 'data-list-id':list.id, 'onsubmit':'return
-            false;'}
-            <input type="hidden" name="card.list.id" value="${list.id}">
-            <input type="text" name="card.name">
-            <input type="button" value="保存" onclick="t.save_card(${list.id})">
-        #{/form}
-        </div>
-    </div>
-</div>
+    </td>
 #{/list}
-<div class="ch-g1-3">
-    <div class="ch-box ch-centercolumn">
-        <div>新的列表</div>
-        <div>
-        #{form @Application.saveList(),id:'create-list-form','data-board-id':board.id, 'onsubmit':'return false;'}
-            <input type="hidden" name="list.board.id" value="${board.id}">
-            <input type="text" name="list.name">
-            <input type="button" value="保存" onclick="t.save_list()">
-        #{/form}
+    <td class="ch-g1-3" style="float:none;width: 400px;">
+        <div class="ch-box ch-centercolumn">
+            <div class="list-title-bar">新的列表</div>
+            <div>
+            #{form @Application.saveList(),id:'create-list-form','data-board-id':board.id, 'onsubmit':'return
+                false;'}
+                <input type="hidden" name="list.board.id" value="${board.id}">
+                <input type="text" name="list.name">
+                <input type="button" value="保存" onclick="t.save_list()">
+            #{/form}
+            </div>
         </div>
-    </div>
-</div>
-
-
+    </td>
+                        </tr>
+    </table>
 <div class="clearfix"></div>

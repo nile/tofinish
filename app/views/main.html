@@ -11,49 +11,55 @@
     <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/mesh-0.10.4.css'}"/>
     <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
     <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-    #{get 'moreStyles' /}
-    #{script "right-src.js"/}
-    #{script "right/in-edit-src.js"/}
-    #{script "right/lightbox-src.js"/}
-    #{script "right/rte-src.js"/}
-    #{script "tofinish.js"/}
-    #{get 'moreScripts'/}
+#{get 'moreStyles' /}
+#{script "right-src.js"/}
+#{script "right/in-edit-src.js"/}
+#{script "right/lightbox-src.js"/}
+#{script "right/rte-src.js"/}
+#{script "tofinish.js"/}
+#{get 'moreScripts'/}
 </head>
 <body>
 <div class="ch-g1" style="height: 72px;">
     <div class="ch-box">
-        #{a @Application.index()}TOFINISH#{/a}
-        <div>#{a @Application.login()}登录#{/a} <a href="javascript:void(0);" onclick="javascript:t.list_boards()"> 面板</a></div>
+    #{a @Application.index()}TOFINISH#{/a}
+        <div>
+            <a href="javascript:void(0)" onclick="t.login()">登录</a>
+            <a href="javascript:void(0);" onclick="javascript:t.list_boards()"> 面板</a>
+        </div>
     </div>
 </div>
 <div class="ch-g1">
-    <div class="ch-g1">
-        <div class="ch-box" id="desktop">
-        #{doLayout /}
-        </div>
+    <div class="ch-box" id="desktop-wrapper">
+        <div id="desktop" style="overflow:auto;"></div>
+    #{doLayout /}
     </div>
-
 </div>
+
 
 <script type="text/javascript">
     var t = new T({
-        view_card_url: '@{Application.viewCard()}',
+        login_url:'@{Application.login()}',
+        view_card_url:'@{Application.viewCard()}',
         list_boards_url:'@{Application.listBoard()}',
-        view_board_url:  '@{Application.viewBoard()}',
-        create_board_url: '@{Application.createBoard()}',
-        view_list_url: '@{Application.viewList()}',
+        view_board_url:'@{Application.viewBoard()}',
+        create_board_url:'@{Application.createBoard()}',
+        view_list_url:'@{Application.viewList()}',
         save_card_url:'@{Application.saveCard()}',
-        view_comments_url: '@{Application.viewComments()}',
-        create_comment_url: '@{Application.createComment()}'
+        view_comments_url:'@{Application.viewComments()}',
+        create_comment_url:'@{Application.createComment()}'
     });
-    $(document).onReady(function(){
-        var _resize = function(){$('desktop').setStyle('height',$(window).size().y-110+'px');};
+    $(document).onReady(function () {
+        var _resize = function () {
+            $('desktop-wrapper').setStyle('height', $(window).size().y - 110 + 'px');
+            $('desktop').setStyle('height', $(window).size().y - 120 + 'px');
+        };
         $(window).on({
-            resize: _resize
+            resize:_resize
         });
         _resize();
     });
-;
+    ;
 </script>
 </body>
 </html>

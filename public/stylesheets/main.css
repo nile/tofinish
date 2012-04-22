@@ -1,3 +1,13 @@
 div.rui-lightbox-scroller{
     overflow-y: auto;
 }
+div.list-title-bar{
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px dotted #BBBBBB;
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+}
+div.list-title-bar:after{
+
+}
