@@ -11,3 +11,14 @@ div.list-title-bar{
 div.list-title-bar:after{
 
 }
+.high-light{
+    background-color: #fe0;
+}
+div.list-box,div.board-box{
+    background-color:#EEEEFF;
+}
+div.ch-box{
+    /*margin: 0px;*/
+    padding: 0px;
+    border: 0px;
+}

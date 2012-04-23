@@ -1,16 +1,2 @@
 #{extends 'plain.html'/}
-<div class="ch-box ch-centercolumn" id="list-${list.id}">
-    <div class="title-bar" data-list-id="${list.id}">${list.name}</div>
-    <div>
-    #{list list.cards(), as:'card'}
-    #{card card:card/}
-    #{/list}
-    </div>
-    <div>
-    #{form @Application.saveCard() , 'id': ('create-card-form-'+list.id), 'data-list-id' : list.id, 'onsubmit':'return false;'}
-        <input type="hidden" name="card.list.id" value="${list.id}">
-        <input type="text" name="card.name">
-        <input type="button" value="保存" onclick="t.save_card(${list.id})">
-    #{/form}
-    </div>
-</div>
+#{include 'inc/list_view.html'/}

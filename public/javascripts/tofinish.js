@@ -22,7 +22,16 @@ T.prototype.list_boards = function () {
     $('desktop').load(this.opts.list_boards_url);
 };
 T.prototype.view_board = function (board_id) {
-    $('desktop').load(this.opts.view_board_url, {params:{id:board_id}});
+    var that = this;
+
+    Xhr.load(this.opts.view_board_url, {params:{id:board_id},
+        onSuccess:function(request){
+            $('desktop').clean().insert(request.responseText);
+            Draggable.rescan();
+            Droppable.rescan();
+            that.update_list_size();
+        }
+    });
 };
 T.prototype.save_board = function () {
     var that = this;
@@ -47,7 +56,17 @@ T.prototype.save_card = function (list_id) {
     }});
 }
 T.prototype.update_list = function (list_id) {
-    $('list-' + list_id).load(this.opts.view_list_url, {params:{listId:list_id}});
+    var that = this;
+    Xhr.load(this.opts.view_list_url, {params:{listId:list_id},
+        onSuccess: function(request){
+            var list_div_id = 'list-' + list_id;
+            var scope = $(list_div_id);
+            scope.clean().insert(request.responseText);
+            Draggable.rescan(scope);
+            Droppable.rescan(scope);
+            that.update_list_size(scope);
+        }
+    });
 }
 T.prototype.view_card = function (card_id) {
     var that = this;
@@ -93,4 +112,35 @@ T.prototype.login = function(){
     $('desktop').load(this.opts.login_url);
 }
 
+/*拖放*/
+T.prototype.list_drag_handler_hover = function(draggable, droppable, event){
+    //alert(target);
+    droppable.element.addClass('high-light');
+}
+T.prototype.list_drag_handler_leave = function(draggable, droppable, event){
+    //alert(target);
+    droppable.element.removeClass('high-light');
+}
+T.prototype.list_drag_handler_drop = function(draggable, droppable, event){
+    //alert(target);
+    //droppable.element.setStyle('background-color','#fe0')
+    droppable.element.removeClass('high-light');
+    var ghost = draggable.element;
+    var from = draggable.element.parent();
+    var to = droppable.element;
+    from.append(droppable.element.first('div'));
+    ghost.erase("style");
+    to.append(ghost);
+}
+T.prototype.update_list_size = function(scope){
+    if(!defined(scope)){
+        scope = $('card-lists-table');
+    }
+    if( $('card-lists-table')){
+        var newHeight = $(window).size().y - 212;
+        scope.find("#card-lists-container").each(function(it){
+            it.setHeight(newHeight);
+        });
+    }
+}
 

@@ -16,6 +16,7 @@
 #{script "right/in-edit-src.js"/}
 #{script "right/lightbox-src.js"/}
 #{script "right/rte-src.js"/}
+#{script "right/dnd-src.js"/}
 #{script "tofinish.js"/}
 #{get 'moreScripts'/}
 </head>
@@ -31,7 +32,7 @@
 </div>
 <div class="ch-g1">
     <div class="ch-box" id="desktop-wrapper">
-        <div id="desktop" style="overflow:auto;"></div>
+        <div id="desktop" style="overflow:hidden; overflow-x: auto;"></div>
     #{doLayout /}
     </div>
 </div>
@@ -53,6 +54,7 @@
         var _resize = function () {
             $('desktop-wrapper').setStyle('height', $(window).size().y - 110 + 'px');
             $('desktop').setStyle('height', $(window).size().y - 120 + 'px');
+            t.update_list_size();
         };
         $(window).on({
             resize:_resize

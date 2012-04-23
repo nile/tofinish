@@ -1,7 +1,7 @@
 #{extends 'plain.html'/}
 <div class="clearfix"></div>
 <div class=" ch-g1-4">
-    <div class="ch-box ch-centercolumn">
+    <div class="ch-box ch-leftcolumn board-box">
         <ul>
             <li>${user.email}</li>
             <li><a href="javascript:void(0);" onclick="t.create_board()">新建面板</a></li>
@@ -12,7 +12,7 @@
 #{if boards}
     #{list boards, as:'board'}
     <div class=" ch-g1-4">
-        <div class="ch-box ch-centercolumn">
+        <div class="ch-box ch-leftcolumn board-box">
             <a href="javascript:void(0)" onclick="t.view_board(${board.id})"> ${board.name}</a>
         </div>
     </div>
