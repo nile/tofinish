@@ -24,4 +24,11 @@ public class MList extends Model {
     public List<MCard> cards(){
         return MCard.find("list = ?" ,this).fetch();
     }
+
+    public void deleteCascade() {
+        for (MCard card : this.cards()) {
+            card.deleteCascade();
+        }
+        this.delete();
+    }
 }

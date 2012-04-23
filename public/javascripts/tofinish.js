@@ -14,7 +14,8 @@ var T = function (options) {
         view_list_url:'',
         save_card_url:'',
         view_comments_url:'',
-        create_comment_url:''
+        create_comment_url:'',
+        delete_list_url:''
     };
     this.opts = $ext(defaults, options);
 };
@@ -67,6 +68,17 @@ T.prototype.update_list = function (list_id) {
             that.update_list_size(scope);
         }
     });
+}
+T.prototype.delete_list = function(list_id){
+    var that = this;
+    new Xhr(that.opts.delete_list_url,{
+            onSuccess:function(){
+                var list_div_id = 'list-' + list_id;
+                var scope = $(list_div_id);
+                scope.remove();
+            }
+        }
+    ).send({listId: list_id});
 }
 T.prototype.view_card = function (card_id) {
     var that = this;

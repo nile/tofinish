@@ -1,21 +1,21 @@
 #{extends 'plain.html'/}
 <div class="clearfix"></div>
-<table id="card-lists-table" class="ch-g1" style="float:none; width: ${(board.lists().size()+1)*400}px;">
+<table id="card-lists-table" class="ch-g1" style="float:none; ">
     <tr>
     #{list board.lists(),as:"list"}
-        <td id="list-${list.id}" style="width: 400px;" rel="droppable"
+        <td id="list-${list.id}" style="width: 400px; padding: 3px;" rel="droppable"
             data-droppable="{onHover:t.list_drag_handler_hover, onLeave:t.list_drag_handler_leave, onDrop: t.list_drag_handler_drop}">
             #{include 'inc/list_view.html'/}
         </td>
     #{/list}
-        <td style="width: 400px;">
-            <div class="ch-box ch-centercolumn">
+        <td style="width: 400px; padding: 3px;">
+            <div class="ch-box ch-centercolumn list-box">
                 <div class="list-title-bar">新的列表</div>
                 <div>
                     <form action="@{Application.saveList()}" id="create-list-form" data-board-id="${board.id}"
                           onsubmit="return false;">
                         <input type="hidden" name="list.board.id" value="${board.id}">
-                        <input type="text" name="list.name">
+                        <input type="text" name="list.name" style="width:350px;">
                         <input type="button" value="保存" onclick="t.save_list()">
                     </form>
                 </div>

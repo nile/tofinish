@@ -17,8 +17,32 @@ div.list-title-bar:after{
 div.list-box,div.board-box{
     background-color:#EEEEFF;
 }
+div.list-box{
+    margin: auto;
+}
 div.ch-box{
     /*margin: 0px;*/
     padding: 0px;
     border: 0px;
+}
+
+input.actions-add{
+    border: 0px;
+    margin:0px;
+    padding: 4px;
+    width: 24px;
+    background: url("/public/images/actions/Add.png") no-repeat;
+    cursor: pointer;
+}
+div.list-action-move, div.list-action-delete{
+    background: url("/public/images/actions/Shuffle.png") no-repeat;
+    width: 24px;
+    height: 24px;
+    cursor: move;
+    float: right;
+    margin: 0 2px;
+}
+div.list-action-delete{
+    background: url("/public/images/actions/Remove.png") no-repeat;
+    cursor: pointer;
 }

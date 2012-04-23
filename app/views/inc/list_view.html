@@ -1,8 +1,8 @@
 <div class="ch-box ch-leftcolumn list-box" rel="draggable"
      data-draggable="{axis: 'x', handle:$('drag-handler-${list.id}')}">
     <div class="list-title-bar" data-list-id="${list.id}">${list.name}
-        <div id="drag-handler-${list.id}" style="display: inline;">+
-        </div>
+        <div id="drag-handler-${list.id}" class="list-action-move"></div>
+        <div onclick="t.delete_list(${list.id})" class="list-action-delete"></div>
     </div>
     <div id="card-lists-container" style="overflow:auto;">
     #{list list.cards(), as:'card'}
@@ -14,8 +14,8 @@
               id="create-card-form-${list.id}" data-list-id="${list.id}"
               onsubmit="return false;">
             <input type="hidden" name="card.list.id" value="${list.id}">
-            <input type="text" name="card.name" style="width:300px;">
-            <input type="button" value="新增" onclick="t.save_card(${list.id})">
+            <input type="text" name="card.name" style="width:350px;">
+            <input type="button" class="actions-add" onclick="t.save_card(${list.id})">
         </form>
     </div>
 </div>

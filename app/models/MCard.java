@@ -2,6 +2,7 @@ package models;
 
 import play.db.jpa.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.util.Date;
@@ -27,5 +28,12 @@ public class MCard extends Model {
     public List<MComment> comments(){
         List<MComment> comments = MComment.find("card = ?", this).fetch();
         return comments;
+    }
+
+    public void deleteCascade() {
+        for (MComment comment : comments()) {
+            comment.delete();
+        }
+        this.delete();
     }
 }
