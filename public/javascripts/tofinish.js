@@ -13,16 +13,22 @@ var T = function (options) {
         create_board_url:'',
         view_list_url:'',
         save_card_url:'',
+        delete_card_url: "",
         view_comments_url:'',
         create_comment_url:'',
         delete_list_url:''
     };
     this.opts = $ext(defaults, options);
+    T.opts = this.opts;
 };
 T.prototype.list_boards = function () {
     $('desktop-holder').load(this.opts.list_boards_url);
 };
-T.prototype.view_board = function (board_id) {
+T.prototype.view_board = function (event,board_id) {
+    if(defined(event) && event != null){
+        this.add_bread_crumbs({text:$(event.target).html(),href:event.target.href,onclick:event.target.onclick});
+    }
+
     var that = this;
 
     Xhr.load(this.opts.view_board_url, {params:{id:board_id},
@@ -46,7 +52,7 @@ T.prototype.create_board = function () {
 T.prototype.save_list = function () {
     var that = this;
     $('create-list-form').send({onSuccess:function () {
-        that.view_board($('create-list-form').get('data-board-id'));
+        that.view_board(null, $('create-list-form').get('data-board-id'));
     }});
 }
 T.prototype.save_card = function (list_id) {
@@ -87,6 +93,12 @@ T.prototype.view_card = function (card_id) {
             new Rte('card-desc-text');
         }});
 }
+T.prototype.delete_card = function(card_id,list_id){
+    var that = this;
+    new Xhr(this.opts.delete_card_url, {onSuccess:function () {
+        that.update_list(list_id);
+    }}).send({'cardId':card_id});
+}
 T.prototype.toggle_card_finished = function (card_id, list_id) {
     var that = this;
     new Xhr(this.opts.save_card_url, {onSuccess:function () {
@@ -123,15 +135,7 @@ T.prototype.login = function(){
     $('desktop-holder').load(this.opts.login_url);
 }
 
-/*拖放*/
-T.prototype.list_drag_handler_hover = function(draggable, droppable, event){
-    //alert(target);
-    droppable.element.addClass('high-light');
-}
-T.prototype.list_drag_handler_leave = function(draggable, droppable, event){
-    //alert(target);
-    droppable.element.removeClass('high-light');
-}
+/*拖放列表*/
 T.prototype.list_drag_handler_drop = function(draggable, droppable, event){
     //alert(target);
     //droppable.element.setStyle('background-color','#fe0')
@@ -142,6 +146,15 @@ T.prototype.list_drag_handler_drop = function(draggable, droppable, event){
     from.append(droppable.element.first('.list-box'));
     ghost.erase("style");
     to.append(ghost);
+}
+/*拖放卡片*/
+T.prototype.card_drag_handler_drop = function(draggable, droppable, event){
+    var ghost = draggable.element;
+    var to = droppable.element;
+    ghost.erase("style");
+    to.append(ghost);
+    new Xhr(T.opts.save_card_url)
+        .send({'card.list.id':droppable.element.get('data-list-id'),'card.id':draggable.element.get('data-card-id')});
 }
 T.prototype.update_list_size = function(scope){
     if(!defined(scope)){
@@ -155,3 +168,17 @@ T.prototype.update_list_size = function(scope){
     }
 }
 
+//私有方法
+T.prototype.add_bread_crumbs = function(action){
+
+    var bread_crumbs = $('actions-bread-crumbs');
+    var exists = false;
+    bread_crumbs.find('a').each(function(it){
+        if(it.get('onclick') == action.onclick){
+            exists = true;
+        }
+    });
+    if(!exists){
+        bread_crumbs.append($E('a',{html:action.text, href:action.href, onclick: action.onclick}));
+    }
+}

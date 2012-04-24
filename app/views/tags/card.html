@@ -1,7 +1,16 @@
-<div>
-    #{ifnot _card.finished}<input type="checkbox" onclick="t.toggle_card_finished(${_card.id},${_card.list.id});">#{/ifnot}
-    <span id="card-${_card.id}">${_card.name}</span>
-    <a href="javascript:void(0)" onclick="t.view_card(${_card.id})">&gt;&gt;</a>
+<div rel="draggable" data-draggable="{handle:$('drag-handler-${_card.id}')}" class="card-draggable"
+     data-list-id="${_card.list.id}" data-card-id="${_card.id}">
+    <div>
+        #{ifnot _card.finished}<input type="checkbox"
+                                      onclick="t.toggle_card_finished(${_card.id},${_card.list.id});">#{/ifnot}
+        <span id="card-${_card.id}">${_card.name}</span>
+    </div>
+    <div>
+        <a id="drag-handler-${_card.id}" class="actions-move" title="移动"></a>
+        <a href="javascript:void(0)" onclick="t.view_card(${_card.id})" class="actions-detail" title="详情"></a>
+        <a href="javascript:void(0)" onclick="t.delete_card(${_card.id}, ${_card.list.id})" class="actions-delete" title="删除"></a>
+        <a class="actions-modify" href="javascript:void(0)" title="修改"
+           onclick="$('card-${_card.id}').inEdit({Xhr:{params:{'card.id' : ${_card.id}}, onSuccess : function(){ t.update_list(${_card.list.id}); }}, name : 'card.name', url : '@{Application.saveCard()}'}); return false;"></a>
+    </div>
+    <div class="clearfix"></div>
 </div>
-<a href="javascript:void(0)"
-   onclick="$('card-${_card.id}').inEdit({Xhr:{params:{'card.id' : ${_card.id}}, onSuccess : function(){ t.update_list(${_card.list.id}); }}, name : 'card.name', url : '@{Application.saveCard()}'}); return false;">修改</a>

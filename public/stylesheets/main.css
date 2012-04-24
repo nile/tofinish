@@ -11,7 +11,7 @@ div.list-title-bar, div.card-title-bar{
 div.list-title-bar:after{
 
 }
-.high-light{
+.high-light, .droppable-allow{
     background-color: #fe0;
 }
 div.list-box,div.board-box{
@@ -34,15 +34,32 @@ input.actions-add{
     background: url("/public/images/actions/x24/Add.png") no-repeat;
     cursor: pointer;
 }
-div.list-action-move, div.list-action-delete{
+
+div.list-action-move, div.list-action-delete,a.actions-detail,
+a.actions-modify,a.actions-delete,a.actions-move{
     background: url("/public/images/actions/x24/Shuffle.png") no-repeat;
     width: 24px;
     height: 24px;
     cursor: move;
     float: right;
-    margin: 0 2px;
+    margin: 0 0px;
 }
 div.list-action-delete{
     background: url("/public/images/actions/x24/Remove.png") no-repeat;
     cursor: pointer;
+}
+a.actions-detail, a.actions-modify,a.actions-delete,a.actions-move{
+    background: url("/public/images/actions/x16/Out.png") no-repeat;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+a.actions-move{
+    background: url("/public/images/actions/x16/Shuffle.png") no-repeat;
+}
+a.actions-modify{
+    background: url("/public/images/actions/x16/Align-justify.png") no-repeat;
+}
+a.actions-delete{
+    background: url("/public/images/actions/x16/Trash.png") no-repeat;
 }

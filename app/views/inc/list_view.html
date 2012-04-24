@@ -1,14 +1,17 @@
 <div style="width:400px;"></div>
-<div class="ch-box ch-leftcolumn list-box" rel="draggable"
+<div class="ch-box ch-leftcolumn list-box list-draggable" rel="draggable"
      data-draggable="{axis: 'x', handle:$('drag-handler-${list.id}')}">
     <div class="list-title-bar" data-list-id="${list.id}">${list.name}
-        <div id="drag-handler-${list.id}" class="list-action-move"></div>
-        <div onclick="t.delete_list(${list.id})" class="list-action-delete"></div>
+        <div id="drag-handler-${list.id}" class="list-action-move" title="移动列表"></div>
+        <div onclick="t.delete_list(${list.id})" class="list-action-delete" title="删除列表"></div>
     </div>
-    <div id="card-lists-container" style="overflow:auto;">
+    <div id="card-lists-container" style="overflow:auto;"
+         rel="droppable"
+         data-droppable="{accept: '.card-draggable', onDrop: t.card_drag_handler_drop}"
+            data-list-id="${list.id}">
     #{list list.cards(), as:'card'}
-                        #{card card:card/}
-                    #{/list}
+          #{card card:card/}
+    #{/list}
     </div>
     <div style="width:400px;">
         <form action="@{Application.saveCard()}" enctype="application/x-www-form-urlencoded"

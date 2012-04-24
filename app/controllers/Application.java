@@ -86,7 +86,12 @@ public class Application extends Controller {
         }
         card.save();
     }
-
+    public static void deleteCard(Long cardId){
+        if (cardId != null) {
+            MCard card = MCard.findById(cardId);
+            card.deleteCascade();;
+        }
+    }
     public static void viewCard(Long cardId) {
         MCard card = MCard.findById(cardId);
         render("Application/view_card.html", card);

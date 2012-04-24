@@ -3,6 +3,7 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import java.util.Date;
 
@@ -20,5 +21,6 @@ public class MComment extends Model {
     @OneToOne
     public MCard card;
     public Date createdAt;
+    @Lob
     public String comment;
 }

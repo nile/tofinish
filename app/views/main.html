@@ -24,7 +24,7 @@
 <div class="ch-g1" style="height: 72px;">
     <div class="ch-box">
     #{a @Application.index()}<h2>TOFINISH</h2>#{/a}
-        <div>
+        <div id="actions-bread-crumbs">
             <a href="javascript:void(0);" onclick="javascript:t.list_boards()"> 面板</a>
         </div>
     </div>
@@ -46,6 +46,7 @@
         create_board_url:'@{Application.createBoard()}',
         view_list_url:'@{Application.viewList()}',
         save_card_url:'@{Application.saveCard()}',
+        delete_card_url:'@{Application.deleteCard()}',
         view_comments_url:'@{Application.viewComments()}',
         create_comment_url:'@{Application.createComment()}',
         delete_list_url: '@{Application.deleteList()}'
