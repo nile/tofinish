@@ -1,3 +1,4 @@
+<div style="width:400px;"></div>
 <div class="ch-box ch-leftcolumn list-box" rel="draggable"
      data-draggable="{axis: 'x', handle:$('drag-handler-${list.id}')}">
     <div class="list-title-bar" data-list-id="${list.id}">${list.name}
@@ -9,7 +10,7 @@
                         #{card card:card/}
                     #{/list}
     </div>
-    <div>
+    <div style="width:400px;">
         <form action="@{Application.saveCard()}" enctype="application/x-www-form-urlencoded"
               id="create-card-form-${list.id}" data-list-id="${list.id}"
               onsubmit="return false;">

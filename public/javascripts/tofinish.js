@@ -139,7 +139,7 @@ T.prototype.list_drag_handler_drop = function(draggable, droppable, event){
     var ghost = draggable.element;
     var from = draggable.element.parent();
     var to = droppable.element;
-    from.append(droppable.element.first('div'));
+    from.append(droppable.element.first('.list-box'));
     ghost.erase("style");
     to.append(ghost);
 }
