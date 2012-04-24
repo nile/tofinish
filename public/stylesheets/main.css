@@ -1,7 +1,7 @@
 div.rui-lightbox-scroller{
     overflow-y: auto;
 }
-div.list-title-bar{
+div.list-title-bar, div.card-title-bar{
     font-weight: bold;
     font-size: 16px;
     border-bottom: 1px dotted #BBBBBB;
@@ -31,11 +31,11 @@ input.actions-add{
     margin:0px;
     padding: 4px;
     width: 24px;
-    background: url("/public/images/actions/Add.png") no-repeat;
+    background: url("/public/images/actions/x24/Add.png") no-repeat;
     cursor: pointer;
 }
 div.list-action-move, div.list-action-delete{
-    background: url("/public/images/actions/Shuffle.png") no-repeat;
+    background: url("/public/images/actions/x24/Shuffle.png") no-repeat;
     width: 24px;
     height: 24px;
     cursor: move;
@@ -43,6 +43,6 @@ div.list-action-move, div.list-action-delete{
     margin: 0 2px;
 }
 div.list-action-delete{
-    background: url("/public/images/actions/Remove.png") no-repeat;
+    background: url("/public/images/actions/x24/Remove.png") no-repeat;
     cursor: pointer;
 }

@@ -1,9 +1,9 @@
 #{extends 'plain.html'/}
 <div class="clearfix"></div>
-<table id="card-lists-table" class="ch-g1" style="float:none; ">
+<table id="card-lists-table" >
     <tr>
     #{list board.lists(),as:"list"}
-        <td id="list-${list.id}" style="width: 400px; padding: 3px;" rel="droppable"
+        <td id="list-${list.id}" style="padding: 3px;" rel="droppable"
             data-droppable="{onHover:t.list_drag_handler_hover, onLeave:t.list_drag_handler_leave, onDrop: t.list_drag_handler_drop}">
             #{include 'inc/list_view.html'/}
         </td>

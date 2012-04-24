@@ -20,14 +20,14 @@ var T = function (options) {
     this.opts = $ext(defaults, options);
 };
 T.prototype.list_boards = function () {
-    $('desktop').load(this.opts.list_boards_url);
+    $('desktop-holder').load(this.opts.list_boards_url);
 };
 T.prototype.view_board = function (board_id) {
     var that = this;
 
     Xhr.load(this.opts.view_board_url, {params:{id:board_id},
         onSuccess:function(request){
-            $('desktop').clean().insert(request.responseText);
+            $('desktop-holder').clean().insert(request.responseText);
             Draggable.rescan();
             Droppable.rescan();
             that.update_list_size();
@@ -37,7 +37,6 @@ T.prototype.view_board = function (board_id) {
 T.prototype.save_board = function () {
     var that = this;
     $('create-board-form').send({onSuccess:function () {
-        Lightbox.hide();
         that.list_boards();
     }});
 }
@@ -121,7 +120,7 @@ T.prototype.create_comment = function (card_id) {
     });
 }
 T.prototype.login = function(){
-    $('desktop').load(this.opts.login_url);
+    $('desktop-holder').load(this.opts.login_url);
 }
 
 /*拖放*/
@@ -149,7 +148,7 @@ T.prototype.update_list_size = function(scope){
         scope = $('card-lists-table');
     }
     if( $('card-lists-table')){
-        var newHeight = $(window).size().y - 212;
+        var newHeight = $(window).size().y - 152;
         scope.find("#card-lists-container").each(function(it){
             it.setHeight(newHeight);
         });

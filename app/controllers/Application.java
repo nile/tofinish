@@ -6,6 +6,7 @@ import play.db.jpa.JPABase;
 import play.mvc.Controller;
 import play.mvc.With;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -14,11 +15,6 @@ import java.util.List;
 public class Application extends Controller {
 
     public static void index() {
-        if (LoginUserFilter.isUserLogin()) {
-            final MUser loginUser = LoginUserFilter.getLoginUser();
-            final List<MBoard> boards = loginUser.boards();
-            render(boards);
-        }
         render();
     }
 
@@ -42,9 +38,14 @@ public class Application extends Controller {
     }
 
     public static void listBoard() {
-        final MUser user = LoginUserFilter.getLoginUser();
-        final List<MBoard> boards = user.boards();
-        render("Application/list_board.html", boards);
+        if(LoginUserFilter.isUserLogin()){
+            final MUser user = LoginUserFilter.getLoginUser();
+            final List<MBoard> boards = user.boards();
+            render("Application/list_board.html", boards);
+        }else{
+            render("Application/list_board.html", Collections.emptyList());
+        }
+
     }
 
     public static void viewBoard(Long id) {

@@ -2,9 +2,7 @@ package models;
 
 import play.db.jpa.Model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +20,7 @@ public class MCard extends Model {
     public MList list;
     public Date createdAt;
     public Date due;
+    @Lob
     public String description;
     public Date finishedAt;
     public boolean finished;

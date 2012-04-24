@@ -25,14 +25,13 @@
     <div class="ch-box">
     #{a @Application.index()}<h2>TOFINISH</h2>#{/a}
         <div>
-            <a href="javascript:void(0)" onclick="t.login()">登录</a>
             <a href="javascript:void(0);" onclick="javascript:t.list_boards()"> 面板</a>
         </div>
     </div>
 </div>
 <div class="ch-g1">
     <div class="ch-box" id="desktop-wrapper">
-        <div id="desktop" style="overflow:hidden; overflow-x: auto;"></div>
+        <div id="desktop-holder" style="overflow:hidden; overflow-x: auto;"></div>
     #{doLayout /}
     </div>
 </div>
@@ -53,8 +52,8 @@
     });
     $(document).onReady(function () {
         var _resize = function () {
-            $('desktop-wrapper').setStyle('height', $(window).size().y - 110 + 'px');
-            $('desktop').setStyle('height', $(window).size().y - 120 + 'px');
+            $('desktop-wrapper').setStyle('height', $(window).size().y - 80 + 'px');
+            $('desktop-holder').setStyle('height', $(window).size().y - 80 + 'px');
             t.update_list_size();
         };
         $(window).on({
@@ -62,7 +61,6 @@
         });
         _resize();
     });
-    ;
 </script>
 </body>
 </html>
