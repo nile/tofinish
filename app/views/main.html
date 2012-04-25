@@ -21,7 +21,7 @@
 #{get 'moreScripts'/}
 </head>
 <body>
-<div class="ch-g1" style="height: 72px;">
+<div class="ch-g1" style="height: 62px;">
     <div class="ch-box">
     #{a @Application.index()}<h2>TOFINISH</h2>#{/a}
         <div id="actions-bread-crumbs">
@@ -31,6 +31,7 @@
 </div>
 <div class="ch-g1">
     <div class="ch-box" id="desktop-wrapper">
+
         <div id="desktop-holder" style="overflow:hidden; overflow-x: hidden;"></div>
     #{doLayout /}
     </div>
@@ -52,15 +53,7 @@
         delete_list_url: '@{Application.deleteList()}'
     });
     $(document).onReady(function () {
-        var _resize = function () {
-            $('desktop-wrapper').setStyle('height', $(window).size().y - 80 + 'px');
-            $('desktop-holder').setStyle('height', $(window).size().y - 80 + 'px');
-            t.update_list_size();
-        };
-        $(window).on({
-            resize:_resize
-        });
-        _resize();
+        t.do_some_init();
     });
 </script>
 </body>

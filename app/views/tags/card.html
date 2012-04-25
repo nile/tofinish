@@ -1,12 +1,13 @@
-<div rel="draggable" data-draggable="{handle:$('drag-handler-${_card.id}')}" class="card-draggable"
+<div rel="draggable" data-draggable="{ handle:$('card-drag-handler-${_card.id}')}" class="card-draggable"
      data-list-id="${_card.list.id}" data-card-id="${_card.id}">
     <div>
-        #{ifnot _card.finished}<input type="checkbox"
+        #{ifnot _card.finished}
+            <input type="checkbox"
                                       onclick="t.toggle_card_finished(${_card.id},${_card.list.id});">#{/ifnot}
         <span id="card-${_card.id}">${_card.name}</span>
     </div>
     <div>
-        <a id="drag-handler-${_card.id}" class="actions-move" title="移动"></a>
+        <a id="card-drag-handler-${_card.id}" class="actions-move" title="移动"></a>
         <a href="javascript:void(0)" onclick="t.view_card(${_card.id})" class="actions-detail" title="详情"></a>
         <a href="javascript:void(0)" onclick="t.delete_card(${_card.id}, ${_card.list.id})" class="actions-delete" title="删除"></a>
         <a class="actions-modify" href="javascript:void(0)" title="修改"

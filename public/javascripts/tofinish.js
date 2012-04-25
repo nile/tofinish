@@ -182,3 +182,69 @@ T.prototype.add_bread_crumbs = function(action){
         bread_crumbs.append($E('a',{html:action.text, href:action.href, onclick: action.onclick}));
     }
 }
+T.scroll_offset = function(offset){
+    if(T.scroll_runner_lock==false){
+        clearInterval(T.scroll_runner);
+        return;
+    }
+    var list_table = $('card-lists-table');
+    if(!defined(list_table)|| list_table == null ){
+        T.scroll_runner_lock = false;
+        clearInterval(T.scroll_runner);
+        return;
+    }
+    var cstr = list_table.getStyle('margin-left');
+    var current = cstr.substr(0,cstr.length-2).toInt();
+    if(offset < 0 && current >=0){
+
+    }
+    list_table.setStyle('margin-left',((current+offset)+'px'))
+    //$('actions-bread-crumbs').append(' '+cstr);
+}
+T.scroll_runner_lock = false;
+T.scroll_runner;
+T.prototype.do_some_init = function(){
+    var _resize = function () {
+        $('desktop-wrapper').setStyle('height', $(window).size().y - 80 + 'px');
+        $('desktop-holder').setStyle('height', $(window).size().y - 80 + 'px');
+        t.update_list_size();
+    };
+    $(window).on({
+        resize:_resize
+    });
+    _resize();
+    var scroll_handler=function(event){
+        //$('actions-bread-crumbs').append(' '+T.lock);
+        var list_table = $('card-lists-table');
+        if(!defined(list_table)|| list_table == null ){
+            T.scroll_runner_lock = false;
+            clearInterval(T.scroll_runner);
+            return;
+        }
+        var mouse_pos = event.position();
+        var desktop = $('desktop-holder');
+        var desktop_size = desktop.size();
+        var desktop_pos = desktop.position();
+        var offset = {x: mouse_pos.x - desktop_pos.x,y:mouse_pos.y-desktop_pos.y};
+
+        if((offset.x - 0).abs()< 30){
+            if(T.scroll_runner_lock == false){
+                T.scroll_runner_lock = true;
+                T.scroll_runner = setInterval('T.scroll_offset(15)',60);
+            }
+        }else if( (offset.x - desktop_size.x).abs()< 30 ){
+            if(T.scroll_runner_lock == false){
+                T.scroll_runner_lock = true;
+                T.scroll_runner=setInterval('T.scroll_offset(-15)',60);
+            }
+        }else{
+            T.scroll_runner_lock = false;
+            clearInterval(T.scroll_runner);
+        }
+    };
+
+    $('desktop-holder').on({
+        //mousedown:scroll_handler,
+        mouseover:scroll_handler
+    });
+}

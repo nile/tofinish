@@ -1,8 +1,8 @@
 <div style="width:400px;"></div>
 <div class="ch-box ch-leftcolumn list-box list-draggable" rel="draggable"
-     data-draggable="{axis: 'x', handle:$('drag-handler-${list.id}')}">
+     data-draggable="{axis: 'x', handle:$('list-drag-handler-${list.id}')}">
     <div class="list-title-bar" data-list-id="${list.id}">${list.name}
-        <div id="drag-handler-${list.id}" class="list-action-move" title="移动列表"></div>
+        <div id="list-drag-handler-${list.id}" class="list-action-move" title="移动列表"></div>
         <div onclick="t.delete_list(${list.id})" class="list-action-delete" title="删除列表"></div>
     </div>
     <div id="card-lists-container" style="overflow:auto;"
