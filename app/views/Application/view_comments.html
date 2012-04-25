@@ -3,6 +3,9 @@
 #{if card.comments().size()==0}
 <div class="ch-information">还没有评论</div>
 #{/if}
-#{list card.comments(), as: 'comment'}
-<div>${comment.comment.raw()} <span>${comment.createdAt.freindly()}</span></div>
-#{/list}
+#{else}
+    <div class="ch-information">评论</div>
+    #{list card.comments(), as: 'comment'}
+    <div>${comment.comment.raw()} <span>${comment.createdAt.freindly()}</span></div>
+    #{/list}
+#{/else}
