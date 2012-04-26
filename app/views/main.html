@@ -17,8 +17,10 @@
 #{script "right/lightbox-src.js"/}
 #{script "right/rte-src.js"/}
 #{script "right/dnd-src.js"/}
+#{script "right/calendar-src.js"/}
 #{script "tofinish.js"/}
 #{get 'moreScripts'/}
+
 </head>
 <body>
 <div class="ch-g1" style="height: 62px;">
@@ -50,7 +52,8 @@
         delete_card_url:'@{Application.deleteCard()}',
         view_comments_url:'@{Application.viewComments()}',
         create_comment_url:'@{Application.createComment()}',
-        delete_list_url: '@{Application.deleteList()}'
+        delete_list_url: '@{Application.deleteList()}',
+        todos_url:'@{Application.todos()}'
     });
     $(document).onReady(function () {
         t.do_some_init();

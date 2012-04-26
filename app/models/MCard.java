@@ -24,7 +24,8 @@ public class MCard extends Model {
     public String description;
     public Date finishedAt;
     public boolean finished;
-    public List<MComment> comments(){
+
+    public List<MComment> comments() {
         List<MComment> comments = MComment.find("card = ?", this).fetch();
         return comments;
     }
@@ -34,5 +35,10 @@ public class MCard extends Model {
             comment.delete();
         }
         this.delete();
+    }
+
+    public static List<MCard> todos() {
+        List<MCard> todos = MCard.find("finished = ?", false).fetch();
+        return todos;
     }
 }

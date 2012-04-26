@@ -112,6 +112,10 @@ public class Application extends Controller {
         render("Application/create_comment.html", card);
     }
 
+    public static void todos(){
+        List<MCard> cards = MCard.todos();
+        render("Application/todos.html",cards);
+    }
     public static void auth(String email, String password) {
         final MUser user = MUser.find("email = ?", email).first();
         if (user != null) {

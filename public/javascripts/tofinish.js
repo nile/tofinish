@@ -16,14 +16,33 @@ var T = function (options) {
         delete_card_url: "",
         view_comments_url:'',
         create_comment_url:'',
-        delete_list_url:''
+        delete_list_url:'',
+        todos_url:''
     };
     this.opts = $ext(defaults, options);
     T.opts = this.opts;
 };
 T.prototype.list_boards = function () {
-    $('desktop-holder').load(this.opts.list_boards_url);
+    var that = this;
+    Xhr.load(this.opts.list_boards_url,{
+        onSuccess: function(req){
+            $('desktop-holder').clean().append(req.responseText);
+            that.update_todos();
+        }
+    });
 };
+T.prototype.update_todos = function(){
+    var that = this;
+    if($('todos-holder') ){
+        Xhr.load(that.opts.todos_url,{
+            onSuccess: function(res){
+                $('todos-holder').clean().append(res.responseText);
+                that.update_list_size();
+            }
+        });
+
+    }
+}
 T.prototype.view_board = function (event,board_id) {
     if(defined(event) && event != null){
         this.add_bread_crumbs({text:$(event.target).html(),href:event.target.href,onclick:event.target.onclick});
@@ -166,6 +185,10 @@ T.prototype.update_list_size = function(scope){
             it.setHeight(newHeight);
         });
     }
+    if($('todos-container')){
+        var newHeight = $(window).size().y - 224;
+        $('todos-container').setStyle('height',newHeight+'px')
+    }
 }
 
 //私有方法
@@ -182,7 +205,9 @@ T.prototype.add_bread_crumbs = function(action){
         bread_crumbs.append($E('a',{html:action.text, href:action.href, onclick: action.onclick}));
     }
 }
-T.scroll_offset = function(offset){
+
+//水平滚动相关
+T.scroll_offset = function(offset, bounds){
     if(T.scroll_runner_lock==false){
         clearInterval(T.scroll_runner);
         return;
@@ -195,30 +220,61 @@ T.scroll_offset = function(offset){
     }
     var cstr = list_table.getStyle('margin-left');
     var current = cstr.substr(0,cstr.length-2).toInt();
-    if(offset < 0 && current >=0){
-
+    var newVar = current+offset;
+    var desktop = $('desktop-holder');
+    var desktop_size = desktop.size();
+    var table_size = list_table.size();
+    //move right
+    if(offset > 0 && newVar > 0){
+        newVar = 0;
+        T.scroll_runner_lock = false;
+        clearInterval(T.scroll_runner);
+    }else if(offset < 0 && newVar < (desktop_size.x-table_size.x)){
+        newVar = desktop_size.x - table_size.x;
+        T.scroll_runner_lock = false;
+        clearInterval(T.scroll_runner);
     }
-    list_table.setStyle('margin-left',((current+offset)+'px'))
+
+    list_table.setStyle('margin-left',newVar+'px')
     //$('actions-bread-crumbs').append(' '+cstr);
 }
 T.scroll_runner_lock = false;
 T.scroll_runner;
+T.prototype.stop_scroll = function(){
+    T.scroll_runner_lock = false;
+    clearInterval(T.scroll_runner);
+}
+T.prototype.scroll_desktop_left = function(){
+    if(T.scroll_runner_lock == false){
+        T.scroll_runner_lock = true;
+        T.scroll_runner = setInterval('T.scroll_offset(10)',30);
+    }
+}
+T.prototype.scroll_desktop_right = function(){
+    if(T.scroll_runner_lock == false){
+        T.scroll_runner_lock = true;
+        T.scroll_runner=setInterval('T.scroll_offset(-10)',30);
+    }
+}
 T.prototype.do_some_init = function(){
+    var that = this;
     var _resize = function () {
-        $('desktop-wrapper').setStyle('height', $(window).size().y - 80 + 'px');
-        $('desktop-holder').setStyle('height', $(window).size().y - 80 + 'px');
+        var wsize = $(window).size();
+        $('desktop-wrapper').setStyle('height', wsize.y - 80 + 'px');
+        $('desktop-holder').setStyle('height', wsize.y - 80 + 'px');
+
         t.update_list_size();
     };
     $(window).on({
-        resize:_resize
+        resize:_resize,
+        mouseleave: that.stop_scroll
     });
     _resize();
-    var scroll_handler=function(event){
+    var scroll_handler = function(event){
         //$('actions-bread-crumbs').append(' '+T.lock);
         var list_table = $('card-lists-table');
         if(!defined(list_table)|| list_table == null ){
-            T.scroll_runner_lock = false;
-            clearInterval(T.scroll_runner);
+           that.stop_scroll();
             return;
         }
         var mouse_pos = event.position();
@@ -227,24 +283,16 @@ T.prototype.do_some_init = function(){
         var desktop_pos = desktop.position();
         var offset = {x: mouse_pos.x - desktop_pos.x,y:mouse_pos.y-desktop_pos.y};
 
-        if((offset.x - 0).abs()< 30){
-            if(T.scroll_runner_lock == false){
-                T.scroll_runner_lock = true;
-                T.scroll_runner = setInterval('T.scroll_offset(15)',60);
-            }
-        }else if( (offset.x - desktop_size.x).abs()< 30 ){
-            if(T.scroll_runner_lock == false){
-                T.scroll_runner_lock = true;
-                T.scroll_runner=setInterval('T.scroll_offset(-15)',60);
-            }
+        if(offset.x <  30){
+            that.scroll_desktop_left();
+        }else if(  -30<(offset.x - desktop_size.x) ){
+            that.scroll_desktop_right();
         }else{
-            T.scroll_runner_lock = false;
-            clearInterval(T.scroll_runner);
+            that.stop_scroll();
         }
     };
 
-    $('desktop-holder').on({
-        //mousedown:scroll_handler,
+    $(document).on({
         mouseover:scroll_handler
     });
 }

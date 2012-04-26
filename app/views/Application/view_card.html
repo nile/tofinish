@@ -6,6 +6,7 @@
 
         <div>
             <input name="card.name" value="${card.name}" style="width:400px;">
+            <input name="card.due" value="${card.due?.format('yyyy-MM-dd')}" data-calendar="" style="width: 80px;">
             <input type="button" value="保存" onclick="t.save_card_detail(${card.id})">
         </div>
         <textarea id="card-desc-text" style="width:588px;" name="card.description"
