@@ -1,9 +1,9 @@
-#{form action:@search().remove('page'), method:'POST', id:'search-form'}
+#{form action:@search().remove('page'), method:'POST', id:'search-form' , 'onsubmit':'return false;'}
     #{if _fields}
         <input type="hidden" name="searchFields" value="${_fields.toString().substring(1, _fields.toString().length()-1).replace(',', '')}" />
     #{/if}
     <input type="text" name="search" value="${params.search?.escape()?.raw()}" />
-    <input type="button" onclick="t.do_search()" value="&{'elasticsearch.search'}" />
+    <input type="button" onclick="t.do_search()" value="搜索" />
     #{if _caller.params.search}
         (<a href="@{search()}">&{'elasticsearch.search.totalSize', _caller.totalCount}</a>)
     #{/if}

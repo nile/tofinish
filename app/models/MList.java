@@ -1,5 +1,6 @@
 package models;
 
+import play.db.jpa.GenericModel;
 import play.db.jpa.Model;
 import play.modules.elasticsearch.annotations.ElasticSearchEmbedded;
 
@@ -24,7 +25,8 @@ public class MList extends Model {
     public Date createdAt;
 
     public List<MCard> cards(){
-        return MCard.find("list = ?" ,this).fetch();
+        JPAQuery query = MCard.find("list = ? order by createdAt desc", this);
+        return query.fetch();
     }
 
     public void deleteCascade() {

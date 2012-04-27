@@ -2,6 +2,9 @@
 <div class="list-title-bar">未完成</div>
 <div id="todos-container" style="overflow-y:scroll; ">
 #{list cards,as: 'card'}
-    <div>${card.name}[<a href="javascript:void(0)" onclick="t.view_board(event,${card.list.board.id})">${card.list.board.name}</a>] </div>
+    <div>
+        <a href="javascript:void(0);" onclick="t.view_card(${card?.id})">${card.name}</a>
+            [<a href="javascript:void(0)" onclick="t.view_board(event,${card.list.board.id})">${card.list.board.name}</a>]
+    </div>
 #{/list}
 </div>

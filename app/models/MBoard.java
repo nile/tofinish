@@ -25,4 +25,7 @@ public class MBoard extends Model {
     public List<MList> lists(){
         return MList.find(" board = ?" ,this).fetch();
     }
+    public long countCards(){
+       return MCard.count("list.board = ?",this);
+    }
 }

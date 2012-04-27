@@ -28,9 +28,8 @@
     #{a @Application.index()}<h2>TOFINISH</h2>#{/a}
         <div id="actions-bread-crumbs">
             <a href="javascript:void(0);" onclick="javascript:t.list_boards()"> 面板</a>
-            <a href="javascript:void(0);" onclick="javascript:t.search()"> 搜索</a>
             <div style="float:right;">
-                #{form @Search.search(),  method:'POST', id:'quick-search-form'}
+                #{form @Search.search(),  method:'POST', id:'quick-search-form', 'onsubmit':'return false;'}
                     <input name="search" type="text" ><input type="button" value="Go" onclick="t.do_search('quick-search-form')">
                 #{/form}
             </div>

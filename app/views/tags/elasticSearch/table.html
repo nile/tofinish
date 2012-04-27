@@ -69,7 +69,8 @@
                 #{doBody body:handler /}
             %{ } else { }%
                 <td>
-                    ${object?.name ?: '(no value)'}<a href="javascript:void(0)" onclick="t.view_board(event, ${object?.list?.board?.id}) ">${object?.list.board.name ?: '(no value)'}</a>
+                    <a href="javascript:void(0);" onclick="t.view_card(${object?.id})">${object?.name ?: '(no value)'}</a>
+                        [<a href="javascript:void(0)" onclick="t.view_board(event, ${object?.list?.board?.id}) ">${object?.list.board.name ?: '(no value)'}</a>]
                 </td>
             %{ } }%
         %{ } }%
