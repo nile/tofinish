@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AntConfiguration">
-    <defaultAnt bundledAnt="true" />
-  </component>
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
     <resourceExtensions />
@@ -27,23 +24,6 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
-  <component name="ProjectCodeStyleSettingsManager">
-    <option name="PER_PROJECT_SETTINGS">
-      <value>
-        <XML>
-          <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
-        </XML>
-      </value>
-    </option>
-  </component>
-  <component name="ProjectDictionaryState">
-    <dictionary name="nile">
-      <words>
-        <w>centercolumn</w>
-        <w>clearfix</w>
-      </words>
-    </dictionary>
-  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/tofinish.iml" filepath="$PROJECT_DIR$/tofinish.iml" />
@@ -54,7 +34,99 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" />
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="Git" />
+    <mapping directory="" vcs="" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+  <component name="libraryTable">
+    <library name="elasticsearch-0.17.6">
+      <CLASSES>
+        <root url="jar://D:/dev/play-1.2.4/modules/elasticsearch-0.4/lib/elasticsearch-0.17.6.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/hadoop/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/hadoop/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/memcached/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/memcached/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/thrift/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/thrift/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/thrift/src/main/gen-java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/wares/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/mapper/attachments/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/mapper/attachments/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/cloud/aws/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/analysis/icu/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/analysis/icu/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/python/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/python/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/javascript/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/javascript/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/groovy/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/groovy/src/main/groovy" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/groovy/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/twitter/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/rabbitmq/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/rabbitmq/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/wikipedia/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/couchdb/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/couchdb/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/benchmark/micro/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/test/testng/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/test/integration/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/elasticsearch/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/elasticsearch/src/main/java" />
+      </SOURCES>
+    </library>
+    <library name="elasticsearch-0.18.5">
+      <CLASSES>
+        <root url="jar://D:/dev/play-1.2.4/modules/elasticsearch-0.4/lib/elasticsearch-0.18.5.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/hadoop/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/hadoop/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/memcached/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/memcached/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/thrift/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/thrift/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/thrift/src/main/gen-java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/transport/wares/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/mapper/attachments/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/mapper/attachments/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/cloud/aws/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/analysis/icu/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/analysis/icu/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/python/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/python/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/javascript/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/javascript/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/groovy/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/groovy/src/main/groovy" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/lang/groovy/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/twitter/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/rabbitmq/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/rabbitmq/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/wikipedia/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/couchdb/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/plugins/river/couchdb/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/benchmark/micro/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/test/testng/src/main/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/test/integration/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/elasticsearch/src/test/java" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-elasticsearch-v0.18.5-0-g3cd9fcd.zip!/elasticsearch-elasticsearch-a64efaf/modules/elasticsearch/src/main/java" />
+      </SOURCES>
+    </library>
+    <library name="play-elasticsearch">
+      <CLASSES>
+        <root url="jar://D:/dev/play-1.2.4/modules/elasticsearch-0.4/lib/play-elasticsearch.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-0.4.zip!/app" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-0.4.zip!/test" />
+        <root url="jar://$USER_HOME$/Downloads/elasticsearch-0.4.zip!/src" />
+      </SOURCES>
+    </library>
   </component>
 </project>
 

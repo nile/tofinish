@@ -1,6 +1,7 @@
 package models;
 
 import play.db.jpa.Model;
+import play.modules.elasticsearch.annotations.ElasticSearchEmbedded;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -18,6 +19,7 @@ import java.util.List;
 public class MList extends Model {
     public String name;
     @OneToOne
+    @ElasticSearchEmbedded
     public MBoard board;
     public Date createdAt;
 

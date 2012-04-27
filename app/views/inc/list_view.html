@@ -5,14 +5,6 @@
         <div id="list-drag-handler-${list.id}" class="list-action-move" title="移动列表"></div>
         <div onclick="t.delete_list(${list.id})" class="list-action-delete" title="删除列表"></div>
     </div>
-    <div id="card-lists-container" style="overflow:auto;"
-         rel="droppable"
-         data-droppable="{accept: '.card-draggable', onDrop: t.card_drag_handler_drop}"
-            data-list-id="${list.id}">
-    #{list list.cards(), as:'card'}
-          #{card card:card/}
-    #{/list}
-    </div>
     <div style="width:400px;">
         <form action="@{Application.saveCard()}" enctype="application/x-www-form-urlencoded"
               id="create-card-form-${list.id}" data-list-id="${list.id}"
@@ -22,4 +14,13 @@
             <input type="button" class="actions-add" onclick="t.save_card(${list.id})">
         </form>
     </div>
+    <div id="card-lists-container" style="overflow:auto;"
+         rel="droppable"
+         data-droppable="{accept: '.card-draggable', onDrop: t.card_drag_handler_drop}"
+            data-list-id="${list.id}">
+    #{list list.cards(), as:'card'}
+          #{card card:card/}
+    #{/list}
+    </div>
+
 </div>

@@ -17,7 +17,8 @@ var T = function (options) {
         view_comments_url:'',
         create_comment_url:'',
         delete_list_url:'',
-        todos_url:''
+        todos_url:'' ,
+        search_url: ''
     };
     this.opts = $ext(defaults, options);
     T.opts = this.opts;
@@ -190,6 +191,22 @@ T.prototype.update_list_size = function(scope){
         $('todos-container').setStyle('height',newHeight+'px')
     }
 }
+
+T.prototype.search = function(){
+    $('desktop-holder').load(this.opts.search_url);
+}
+
+T.prototype.do_search = function(form_id){
+    if(form_id==null){
+        form_id = 'search-form';
+    }
+    $(form_id).send({
+        onSuccess: function(r) {
+            $('desktop-holder').update(r.responseText);
+        }
+    });
+}
+
 
 //私有方法
 T.prototype.add_bread_crumbs = function(action){

@@ -99,6 +99,7 @@ public class Application extends Controller {
 
     public static void commentCard(MComment comment) {
         comment.createdAt = new Date();
+        comment.user = LoginUserFilter.getLoginUser();
         comment.save();
     }
 
