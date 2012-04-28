@@ -22,8 +22,13 @@
 #{if boards}
     #{list boards, as:'board'}
     <div class=" ch-g1-4">
-        <div class="ch-box ch-leftcolumn board-box card-title-bar">
-            <a href="javascript:void(0)" onclick="t.view_board(event, ${board.id})"> ${board.name}</a>
+        <div class="ch-box ch-leftcolumn board-box">
+            <div class="card-title-bar" data-board-id="${board.id}">
+                <a href="javascript:void(0)" onclick="t.view_board(event,${board.id})"> ${board.name}</a>
+                <div onclick="t.delete_board(${board.id})" class="list-action-delete" title="删除列表"></div>
+            </div>
+
+            <div ></div>
             <div >
                 ${board.lists().size()} ${board.countCards()}
             </div>

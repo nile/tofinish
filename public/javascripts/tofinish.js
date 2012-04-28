@@ -18,7 +18,8 @@ var T = function (options) {
         create_comment_url:'',
         delete_list_url:'',
         todos_url:'' ,
-        search_url: ''
+        search_url: '',
+        delete_board_url:''
     };
     this.opts = $ext(defaults, options);
     T.opts = this.opts;
@@ -65,6 +66,15 @@ T.prototype.save_board = function () {
     $('create-board-form').send({onSuccess:function () {
         that.list_boards();
     }});
+}
+T.prototype.delete_board = function(board_id){
+    var that = this;
+    new Xhr(that.opts.delete_board_url,{
+            onSuccess:function(){
+               that.list_boards();
+            }
+        }
+    ).send({boardId: board_id});
 }
 T.prototype.create_board = function () {
     Lightbox.load(this.opts.create_board_url).show();

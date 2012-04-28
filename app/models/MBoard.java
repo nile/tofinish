@@ -6,6 +6,7 @@ import play.modules.elasticsearch.annotations.ElasticSearchable;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -27,5 +28,13 @@ public class MBoard extends Model {
     }
     public long countCards(){
        return MCard.count("list.board = ?",this);
+    }
+
+    public void deleteCascade() {
+        for (Iterator<MList> iterator = lists().iterator(); iterator.hasNext(); ) {
+            MList list = iterator.next();
+            list.deleteCascade();
+        }
+        this.delete();
     }
 }

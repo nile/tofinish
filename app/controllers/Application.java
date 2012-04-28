@@ -36,6 +36,14 @@ public class Application extends Controller {
         board.user = LoginUserFilter.getLoginUser();
         board.save();
     }
+    public static void deleteBoard(Long boardId){
+        if(boardId!=null){
+            MBoard board = MBoard.findById(boardId);
+            if(board!=null){
+                board.deleteCascade();
+            }
+        }
+    }
 
     public static void listBoard() {
         if(LoginUserFilter.isUserLogin()){
