@@ -1,6 +1,7 @@
 package bootup;
 
 import models.MCard;
+import play.Play;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.modules.elasticsearch.ElasticSearch;
@@ -16,13 +17,14 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @OnApplicationStart
-public class Bootup extends Job{
+public class Bootup extends Job {
     public void doJob() {
-        System.out.println("系统启动");
-        List<MCard> cards = MCard.all().fetch();
-        for (Iterator<MCard> iterator = cards.iterator(); iterator.hasNext(); ) {
-            MCard card = iterator.next();
-            ElasticSearch.index(card);
+        if ("true".equals(Play.configuration.getProperty("reindex", "false"))) {
+            List<MCard> cards = MCard.all().fetch();
+            for (Iterator<MCard> iterator = cards.iterator(); iterator.hasNext(); ) {
+                MCard card = iterator.next();
+                ElasticSearch.index(card);
+            }
         }
     }
 }
