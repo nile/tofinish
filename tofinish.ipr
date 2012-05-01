@@ -24,6 +24,13 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="nile">
+      <words>
+        <w>leftcolumn</w>
+      </words>
+    </dictionary>
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/tofinish.iml" filepath="$PROJECT_DIR$/tofinish.iml" />

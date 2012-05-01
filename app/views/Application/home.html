@@ -1,0 +1,35 @@
+#{extends 'plain.html'/}
+<div class=" ch-g1-4">
+    <div class="ch-box ch-leftcolumn board-box">
+
+        <div>
+        #{if user}
+            当前用户:${user.email}
+            <a href="@{Application.logout()}">退出</a>
+        #{/if}
+        #{else}
+            <a href="javascript:void(0)" onclick="t.login()">登录</a>
+        #{/else}
+        </div>
+    #{if user}
+        <div>#{include 'Application/create_board.html'/}</div>
+    #{/if}
+        <div id="todos-holder"></div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="ch-g1-4" id="rent-actives-holder">
+    最新事件
+</div>
+<div class="ch-g2-4" id="boards-holder">
+
+</div>
+
+<script type="text/javascript">
+    $(document).on({
+        ready:function(){
+
+        }
+    });
+
+</script>

@@ -1,40 +1,19 @@
 #{extends 'plain.html'/}
-<div class="clearfix"></div>
-<div class=" ch-g1-4">
-    <div class="ch-box ch-leftcolumn board-box">
-
-        <div>
-        #{if user}
-            当前用户:${user.email}
-            <a href="@{Application.logout()}">退出</a>
-        #{/if}
-        #{else}
-            <a href="javascript:void(0)" onclick="t.login()">登录</a>
-        #{/else}
-        </div>
-    #{if user}
-        <div>#{include 'Application/create_board.html'/}</div>
-    #{/if}
-        <div id="todos-holder" ></div>
-        <div class="clearfix"></div>
-    </div>
-</div>
 #{if boards}
     #{list boards, as:'board'}
-    <div class=" ch-g1-4">
+    <div class=" ch-g1-3">
         <div class="ch-box ch-leftcolumn board-box">
             <div class="card-title-bar" data-board-id="${board.id}">
-                <a href="javascript:void(0)" onclick="t.view_board(event,${board.id})"> ${board.name}</a>
+                <a href="javascript:void(0)" onclick="t.view_board(event, ${board.id})"> ${board.name}</a>
                 <div onclick="t.delete_board(${board.id})" class="list-action-delete" title="删除列表"></div>
             </div>
 
             <div ></div>
             <div >
-                ${board.lists().size()} ${board.countCards()}
+            ${board.lists().size()} ${board.countCards()}
             </div>
         </div>
     </div>
 
     #{/list}
 #{/if}
-<div class="clearfix"></div>

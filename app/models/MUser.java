@@ -32,4 +32,8 @@ public class MUser extends Model {
     public static MUser getByEmail(String email){
         return MUser.find("email = ?", email).first();
     }
+    public List<MCard> todos(){
+        List<MCard> todos = MCard.find("finished = ?", false).fetch();
+        return todos;
+    }
 }

@@ -19,17 +19,28 @@ var T = function (options) {
         delete_list_url:'',
         todos_url:'' ,
         search_url: '',
+        home_url: '',
         delete_board_url:''
     };
     this.opts = $ext(defaults, options);
     T.opts = this.opts;
 };
+T.prototype.home = function(){
+    var that = this;
+    Xhr.load(this.opts.home_url,{
+         scriptEval:true,
+         onSuccess : function(r){
+             $('desktop-holder').clean().insert(r.responseText);
+             that.list_boards();
+             that.update_todos();
+         }
+    });
+}
 T.prototype.list_boards = function () {
     var that = this;
     Xhr.load(this.opts.list_boards_url,{
         onSuccess: function(req){
-            $('desktop-holder').clean().append(req.responseText);
-            that.update_todos();
+            $('boards-holder').clean().append(req.responseText);
         }
     });
 };

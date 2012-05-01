@@ -40,9 +40,4 @@ public class MCard extends Model {
         MComment.delete("card = ?",this);
         this.delete();
     }
-
-    public static List<MCard> todos() {
-        List<MCard> todos = MCard.find("finished = ?", false).fetch();
-        return todos;
-    }
 }

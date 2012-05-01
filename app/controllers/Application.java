@@ -26,7 +26,10 @@ public class Application extends Controller {
         session.clear();
         index();
     }
+    public static void home(){
 
+        render("Application/home.html");
+    }
     public static void createBoard() {
         render("Application/create_board.html");
     }
@@ -122,7 +125,11 @@ public class Application extends Controller {
     }
 
     public static void todos(){
-        List<MCard> cards = MCard.todos();
+        MUser user = LoginUserFilter.getLoginUser();
+        List<MCard> cards = Collections.emptyList();
+        if(user != null){
+            cards = user.todos();
+        }
         render("Application/todos.html",cards);
     }
     public static void auth(String email, String password) {

@@ -4,7 +4,7 @@
 #{list cards,as: 'card'}
     <div>
         <a href="javascript:void(0);" onclick="t.view_card(${card?.id})">${card.name}</a>
-            [<a href="javascript:void(0)" onclick="t.view_board(event,${card.list.board.id})">${card.list.board.name}</a>]
+            [<a href="javascript:void(0)" onclick="t.view_board(event,${card.list.board.id})">${card.list.board.name}-${card.list.name}</a>]
     </div>
 #{/list}
 </div>
