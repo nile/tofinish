@@ -27,11 +27,14 @@ public class Application extends Controller {
         index();
     }
     public static void home(){
-
-        render("Application/home.html");
+        if(LoginUserFilter.isUserLogin()){
+            render("Application/home.html");
+        }   else{
+            render("Application/public-home.html");
+        }
     }
     public static void createBoard() {
-        render("Application/create_board.html");
+        render("Application/create-board.html");
     }
 
     public static void saveBoard(MBoard board) {
@@ -52,9 +55,9 @@ public class Application extends Controller {
         if(LoginUserFilter.isUserLogin()){
             final MUser user = LoginUserFilter.getLoginUser();
             final List<MBoard> boards = user.boards();
-            render("Application/list_board.html", boards);
+            render("Application/list-board.html", boards);
         }else{
-            render("Application/list_board.html", Collections.emptyList());
+            render("Application/list-board.html", Collections.emptyList());
         }
 
     }
@@ -62,16 +65,16 @@ public class Application extends Controller {
     public static void viewBoard(Long id) {
         final MBoard board = MBoard.findById(id);
         final List<MList> lists = board.lists();
-        render("Application/view_board.html", board, lists);
+        render("Application/view-board.html", board, lists);
     }
 
     public static void createList(Long boardId) {
-        render("Application/create_list.html", boardId);
+        render("Application/create-list.html", boardId);
     }
 
     public static void viewList(Long listId) {
         MList list = MList.findById(listId);
-        render("Application/view_list.html", list);
+        render("Application/view-list.html", list);
     }
 
     public static void saveList(MList list) {
@@ -105,7 +108,7 @@ public class Application extends Controller {
     }
     public static void viewCard(Long cardId) {
         MCard card = MCard.findById(cardId);
-        render("Application/view_card.html", card);
+        render("Application/view-card.html", card);
     }
 
     public static void commentCard(MComment comment) {
@@ -116,12 +119,12 @@ public class Application extends Controller {
 
     public static void viewComments(Long cardId) {
         MCard card = MCard.findById(cardId);
-        render("Application/view_comments.html", card);
+        render("Application/view-comments.html", card);
     }
 
     public static void createComment(Long cardId) {
         MCard card = MCard.findById(cardId);
-        render("Application/create_comment.html", card);
+        render("Application/create-comment.html", card);
     }
 
     public static void todos(){
@@ -137,15 +140,19 @@ public class Application extends Controller {
         if (user != null) {
             if (StringUtils.equals(user.password, password)) {
                 session.put("email", user.email);
-                index();
+                //index();
             }
         }
-        login();
+        //login();
     }
 
     public static void register(String email, String password) {
-        MUser.register(email, password);
-        Notifier.active(email, password);
-        login();
+        if(MUser.getByEmail(email)==null){
+            MUser.register(email, password);
+            Notifier.active(email, password);
+        }  else{
+            flash.error("邮箱地址%s已经使用",email);
+        }
+        index();
     }
 }

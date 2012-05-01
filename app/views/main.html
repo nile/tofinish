@@ -29,9 +29,9 @@
         <div id="actions-bread-crumbs">
             <a href="javascript:void(0);" onclick="javascript:t.home()">面板</a>
             <div style="float:right;">
-                #{form @Search.search(),  method:'POST', id:'quick-search-form', 'onsubmit':'return false;'}
+                <form action="@{Search.search()}"  method='POST' id='quick-search-form' onsubmit='return false;'>
                     <input name="search" type="text" ><input type="button" value="Go" onclick="t.do_search('quick-search-form')">
-                #{/form}
+                </form>
             </div>
         </div>
     </div>

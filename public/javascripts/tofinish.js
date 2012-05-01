@@ -38,11 +38,13 @@ T.prototype.home = function(){
 }
 T.prototype.list_boards = function () {
     var that = this;
+    if($('boards-holder')){
     Xhr.load(this.opts.list_boards_url,{
         onSuccess: function(req){
             $('boards-holder').clean().append(req.responseText);
         }
     });
+    }
 };
 T.prototype.update_todos = function(){
     var that = this;
@@ -174,6 +176,15 @@ T.prototype.create_comment = function (card_id) {
 }
 T.prototype.login = function(){
     $('desktop-holder').load(this.opts.login_url);
+}
+
+T.prototype.auth = function(){
+    var that = this;
+    $('login-form').send({
+        onSuccess: function(r) {
+            that.home();
+        }
+    });
 }
 
 /*拖放列表*/

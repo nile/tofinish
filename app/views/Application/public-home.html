@@ -1,0 +1,21 @@
+#{extends 'plain.html'/}
+<div class="ch-g1-4">
+    <div class="ch-box ch-leftcolumn board-box" id="user-holder">
+       　     <div class="ch-g1">
+        <div class="ch-box ch-centercolumn">
+            <form id="login-form" action="@{Application.auth}" method="POST">
+                <input type="text" name="email">
+                <input type="password" name="password">
+                <input type="button" value="登录" onclick="t.auth()">
+            </form>
+        </div>
+    </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="ch-g3-4">
+    TOFINISH是一个列表式项目管理工具。 <br>
+    面板：可以容纳不同的列表<br>
+    列表：可以容纳不同的卡片<br>
+    卡片：任务卡片，代表各项需要执行的任务；可以通过列表，进行分门别类
+</div>
